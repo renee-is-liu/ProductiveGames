@@ -36,6 +36,14 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Deploying
+
+To deploy the project run:
+```
+ng deploy --base-href=/ProductiveGames/
+```
+This will compile and push your changes to gh-pages branch, the Github pages will automatically run a deployment on gh-pages branch within a few mins.
+
 ## Running unit tests
 
 To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
