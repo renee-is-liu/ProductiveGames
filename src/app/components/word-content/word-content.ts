@@ -7,4 +7,5 @@ import { Wordle } from '../wordle/wordle';
   templateUrl: './word-content.html',
   styleUrl: './word-content.scss',
 })
-export class WordContent {}
+export class WordContent {
+}

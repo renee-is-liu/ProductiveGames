@@ -12,6 +12,6 @@
     }
   </p>
 } @else {
-  <input id="guess" type="text" maxlength="5" [(ngModel)]="guess" (keydown.enter)="checkGuess()" autofocus autocomplete="off">
   <p class="attempts-left">Word processor has {{ attemptsLeft() }} tries to find the word.</p>
+  <input id="guess" type="text" maxlength="5" [(ngModel)]="guess" (keydown.enter)="checkGuess()" autofocus autocomplete="off">
 }
