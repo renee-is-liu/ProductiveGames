@@ -15,11 +15,11 @@ export class Wordle implements OnInit {
   protected readonly answer = signal<string>('Loading...');
   protected guess = signal<string>('');
   protected guesses = signal<string[]>([]);
+  protected guessResults = signal<string[]>([]);
+  protected gameOver = computed(() => this.attemptsLeft() <= 0 || this.gameWon());
+  protected gameWon = computed(() => this.guess().toLowerCase() === this.answer().toLowerCase());
+  protected attemptsLeft = computed(() => 6 - this.guesses().length);
 
-  // @HostListener('click', ['$event'])
-  // onClick(event: MouseEvent): void {
-  //   console.log('Left click event fired', event);
-  // }
   constructor() {
     this.wordleService.getWordle().subscribe((response: any) => {
       this.answer.set(response.answer.toLowerCase());
@@ -33,10 +33,15 @@ export class Wordle implements OnInit {
     this.guess.update((current) => current.toLowerCase());
     this.wordleService.isValidWord(this.guess()).subscribe({
       next: () => {
-        this.guesses.update((current) => [...current, this.highlightLetters(this.guess())]);
+        this.guesses.update((current) => [...current,  this.guess()]);
+        const result = [`For ${this.guess()}: `, this.highlightLetters(this.guess())].join(' ');
+        this.guessResults.update((current) => [...current, result]);
         this.guess.set('');
       },
-      error: () => alert('Sorry, that is not a valid word. Please try again.'),
+      error: () => {
+        this.guessResults.update((current) => [...current, `${this.guess()} is not a valid word.`]);
+        this.guess.set('');
+      }
     });
   }
 

@@ -10,3 +10,23 @@
         margin-bottom: 0;
     }
 }
+
+.report {
+    border: none;
+    outline: none;
+    display: inline;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    width: 100%;
+    field-sizing: content;
+    min-height: 1.5rem;
+    resize: none; 
+}
+
+.game-label {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
