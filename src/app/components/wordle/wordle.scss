@@ -1,0 +1,20 @@
+#guess {
+    border: none;
+    outline: none;
+    display: inline;
+}
+
+.guesses {
+    margin: 0;
+    :last-child{
+        display: inline;
+    }
+}
+::ng-deep {
+    .correct {
+        background-color: lightgreen;
+    }
+    .present {
+        background-color: lightcoral;
+    }
+}

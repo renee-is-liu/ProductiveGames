@@ -1,0 +1,6 @@
+<span class="guesses">
+    @for (guess of guesses(); track guess) {
+      <div [innerHTML]="guess"></div>
+    }
+</span>
+<input id="guess" type="text" maxlength="5" [(ngModel)]="guess" (keydown.enter)="checkGuess()" autofocus autocomplete="off">
